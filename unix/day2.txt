@@ -1,0 +1,43 @@
+[1:36 pm, 15/04/2023] +91 98343 05085: - Backup & Restore:
+```
+Backup: [tarball] [.tar]
+
+Syntax:
+``
+# tar -attributes <new_backup_file>.tar <path_of_original_data>
+
+a) Create
+`
+# tar -cvf natasha_backup.tar /home/natasha 
+
+-c : Create
+-v : verbose
+-f : forcefully
+
+b) View
+``````
+# tar -tvf natasha_backup.tar
+
+-t : Tree view
+
+c) Extract
+
+# tar -xvf natasha_backup.tar [Extract the data in CWD]
+
+-x : Extract
+
+# tar -xvf natasha_backup.tar -C /data
+
+-C : Create [Extract data in specific location]
+[1:36 pm, 15/04/2023] +91 98343 05085: [tarball + Gunzip]:[.tgz]
+-------------------
+a) Create:
+# tar -czvf natasha_backup.tgz /home/natasha 
+
+b) View:
+# tar -tzvf natasha_backup.tgz
+
+c)extract
+# tar -xzvf natasha_backup.tgz
+# tar -xzvf natasha_backup.tgz -C /data
+=========================================================
