@@ -1,1 +1,0 @@
-# HPCAP_ALL
