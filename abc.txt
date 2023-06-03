@@ -1,0 +1,27 @@
+[8:09 am, 26/05/2023] ~: docker build -t java-app .
+docker run java-app
+To resolve: docker run –it java-app
+
+
+docker pull tomcat:latest
+docker run -it --name tomcat-container -p 8080:8080 tomcat:latest /bin/bash
+docker exec -it tomcat-container /bin/bash
+[8:13 am, 26/05/2023] ~: s3-IAM-Roles
+create roles
+select EC2
+permissions
+	awslambdabasicexecutionrole
+	cloudwatchfullaccess
+	amazons3fullaccess
+s3-create bucket
+add trigger-select s3
+[8:19 am, 26/05/2023] ~: /24 default for c
+/25 1
+	2 subnet
+/26 2 bit sid
+	4 subnet
+/27 3 bit sid
+	8 subnets
+	
+
+/30 6 bts sid 2 bits hosts

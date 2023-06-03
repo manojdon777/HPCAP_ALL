@@ -1,0 +1,58 @@
+To obtain your AWS Access Key ID and Secret Access Key, you need to create an IAM (Identity and Access Management) user with the necessary permissions to access the S3 bucket. Here's a step-by-step guide:
+
+1. Sign in to the AWS Management Console: https://aws.amazon.com/console/
+
+2. Navigate to the IAM (Identity and Access Management) service by typing "IAM" in the search bar and selecting it from the results.
+
+3. In the IAM dashboard, click on "Users" in the left-hand navigation pane.
+
+4. Click on the "Add user" button.
+
+5. Provide a user name and select "Programmatic access" as the access type. Click "Next: Permissions".
+
+6. You can either attach an existing policy or create a new policy for the user. To grant the user full access to S3, you can attach the "AmazonS3FullAccess" policy. Click "Next: Tags" after selecting the policy.
+
+7. Optionally, you can add tags to help you manage and categorize the user. Click "Next: Review".
+
+8. Review the user details and click "Create user" to finish the process.
+
+9. Once the user is created, you'll see the "Access key ID" and "Secret access key" on the final screen. You can download the CSV file containing the keys or copy them directly from the console. Keep the Secret Access Key safe, as you won't be able to access it again.
+
+**Important**: Make sure to store your Secret Access Key securely, as it provides access to your AWS resources. Do not share it publicly or with unauthorized individuals.
+
+Now you have the necessary Access Key ID and Secret Access Key to configure `s3fs` on your Debian Linux machine.
+
+
+
+
+1. `s3fs` requires the S3 bucket access key ID and secret access key. These can be provided in a password file. This file should contain a single line in the format `accessKeyId:secretAccessKey`.
+
+
+echo ACCESS_KEY_ID:SECRET_ACCESS_KEY > ${HOME}/.passwd-s3fs
+chmod 600 ${HOME}/.passwd-s3fs
+
+
+Replace `ACCESS_KEY_ID` and `SECRET_ACCESS_KEY` with your actual AWS access key ID and secret access key.
+
+2. Now you can mount your S3 bucket:
+
+
+mkdir /path/to/mount/point
+s3fs mybucket /path/to/mount/point -o passwd_file=${HOME}/.passwd-s3fs
+
+
+Replace `mybucket` with the name of your S3 bucket, and `/path/to/mount/point` with the directory where you want to mount the S3 bucket.
+
+By default, `s3fs` mounts the bucket with the `allow_other` option off, which means the bucket is only accessible to the user who mounted it. If you want the bucket to be accessible to all users, use the `allow_other` option:
+
+
+s3fs mybucket /path/to/mount/point -o passwd_file=${HOME}/.passwd-s3fs -o allow_other
+
+
+To unmount the bucket, you can use the `umount` command:
+
+
+sudo umount /path/to/mount/point
+
+
+Remember that Amazon charges for S3 usage, including storage used, data transfer, and requests made. Be aware of the costs associated with heavy S3 usage.
