@@ -23,7 +23,7 @@ int main(int argc, char **argv){
 
 	for(;start<10;){
 		for (int j = start; j<end; j++){
-			if(j<10)
+			//if(j<10)
 				c[j] = a[j] + b[j];
 		}
 		start += chunk_size * size;
