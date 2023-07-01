@@ -1,0 +1,16 @@
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+. /home/apps/spack/share/spack/setup-env.sh
+spack load gcc@11.2.0
+spack load cuda@11.5.0 /oxw5blb
+alias g='bash /home/user13/scripts/openMP.sh'
+set nu
+# Uncomment the following line if you don't like systemctl's auto-paging feature:
+# export SYSTEMD_PAGER=
+
+# User specific aliases and functions
+
